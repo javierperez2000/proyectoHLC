@@ -25,7 +25,8 @@ Aunque realmente estos servicios y su configuración no estarán a la hora de le
 _Ansible:_
 
 ```
-Utilizaremos Ansible para la configuración completa de las máquinas levantadas con Docker; Instalación de paquetes, configuración de los servicios, etc...
+Utilizaremos Ansible para la configuración completa de las máquinas levantadas con Docker:
+Instalación de paquetes, configuración de los servicios, etc...
 ```
 
 ---
