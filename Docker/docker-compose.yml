@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+    mysql:
+        container_name: mysql
+        hostname: mysql
+        build:
+            context: ./mysql
+            dockerfile: ./Dockerfile
+        networks: 
+            netansible:
+                ipv4_address: 172.128.20.2   
+    apache:
+        container_name: apache
+        hostname: apache
+        build:
+            context: ./apache
+            dockerfile: ./Dockerfile
+        networks: 
+            netansible:
+                ipv4_address: 172.128.20.3   
+    correo:
+        container_name: correo
+        hostname: correo
+        build:
+            context: ./correo
+            dockerfile: ./Dockerfile
+        networks: 
+            netansible:
+                ipv4_address: 172.128.20.4    
+networks: 
+    netansible:
+        ipam: 
+            driver: default
+            config:  
+                - subnet: 172.128.20.0/24
