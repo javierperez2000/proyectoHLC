@@ -1,0 +1,9 @@
+listaUsuarios:
+    - { nombre: 'juan', grupo: 'www-data' }
+    - { nombre: 'ana', grupo: 'www-data' }
+    - { nombre: 'maria', grupo: 'root' }
+
+listaPaquetes: 
+    - { name: 'mysql-server', version: 'latest' }
+    - { name: 'php7.4', version: 'latest' }
+    - { name: 'phpmyadmin', version: 'latest' }

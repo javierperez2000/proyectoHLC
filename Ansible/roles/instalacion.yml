@@ -1,0 +1,4 @@
+- name: Instalar y configurar instalar_apache2.yml
+  hosts: webservers
+  roles:
+    - { role: hosts }

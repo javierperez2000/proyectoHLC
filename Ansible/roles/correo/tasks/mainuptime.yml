@@ -1,0 +1,6 @@
+- name: Ejecutar el comando uptime
+  command: uptime
+  register: salida_uptime
+- name: Visualizar variable de salida
+  # debug: var=salida_uptime
+  debug: var=salida_uptime.stdout

@@ -1,0 +1,9 @@
+- name: Instalar software necesario
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.version }}"
+  loop: "{{ listaPaquetes }}"
+
+- name: Crear usuarios
+  user: name="{{ item.nombre }}" groups="{{ item.grupo }}"
+  loop: "{{ listaUsuarios }}"

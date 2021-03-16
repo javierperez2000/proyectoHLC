@@ -1,0 +1,5 @@
+listaHosts:
+    - { host: 'routerAnsible', ip: '172.50.0.1' }
+    - { host: 'ansible1', ip: '172.50.0.2' }
+    - { host: 'ansible2', ip: '172.50.0.3' }
+    - { host: 'ansible3', ip: '172.50.0.4' }
