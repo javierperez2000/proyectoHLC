@@ -1,4 +1,14 @@
-- name: Instalar y configurar instalar_apache2.yml
-  hosts: webservers
+- name: Configuración servidor apache2.
+  hosts: apacheHLC
   roles:
-    - { role: hosts }
+    - { role: apache2 }
+
+- name: Configuración servidor de correo.
+  hosts: correoHLC
+  roles:
+    - { role: correo }
+
+- name: Configuración mysql
+  hosts: mysqlHLC
+  roles:
+    - { role: mysql }
