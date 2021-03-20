@@ -1,2 +1,11 @@
-- include_tasks: tasks_hosts.yml
-  loop: "{{ listaHosts }}"
+- name: Actualizar repositorios
+  become: true
+  apt:
+    upgrade: 'yes'
+    update_cache: yes
+    cache_valid_time: 3600
+- name: Instalar MySQL
+  become: true
+  apt:
+    name: mariadb-server
+    state: latest
