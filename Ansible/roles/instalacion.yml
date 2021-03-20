@@ -1,14 +1,17 @@
 - name: Configuración servidor apache2.
+  become: true
   hosts: apacheHLC
   roles:
     - { role: apache2 }
 
 - name: Configuración servidor de correo.
+  become: true
   hosts: correoHLC
   roles:
     - { role: correo }
 
 - name: Configuración mysql
+  become: true
   hosts: mysqlHLC
   roles:
     - { role: mysql }

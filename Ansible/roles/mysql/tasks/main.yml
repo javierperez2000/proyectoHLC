@@ -1,11 +1,11 @@
-- name: Actualizar repositorios
-  become: true
-  apt:
-    upgrade: 'yes'
-    update_cache: yes
-    cache_valid_time: 3600
+# - name: Actualizar repositorios
+#   apt:
+#     upgrade: 'yes'
+#     update_cache: yes
+#     cache_valid_time: 3600
 - name: Instalar MySQL
-  become: true
   apt:
     name: mariadb-server
     state: latest
+- name: Iniciar y habilitar el servicio MariaDB
+  service: name=mysql state=started enabled=true

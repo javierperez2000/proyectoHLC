@@ -1,5 +1,5 @@
 FROM debian
-RUN apt update && apt install -yq --no-install-recommends \
+RUN apt update -y && apt install -yq --no-install-recommends \
     apt-utils \
     iputils-ping \
     openssh-server \
@@ -25,4 +25,4 @@ RUN useradd -rm -d /home/$USUARIO -s /bin/bash $USUARIO
 RUN echo $USUARIO:$PASSWD | chpasswd
 RUN echo $USUARIO "ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-ENTRYPOINT service ssh start && tail -f /dev/null
+ENTRYPOINT service ssh start && service ssh restart && tail -f /dev/null
