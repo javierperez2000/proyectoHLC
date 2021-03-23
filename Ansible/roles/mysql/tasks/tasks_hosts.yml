@@ -9,5 +9,6 @@
     owner: root
     group: root
     mode: 0544
+
 - name: ejecutar addhosts
   command: /root/addhosts.sh

@@ -1,5 +1,14 @@
 listaHosts:
-    - { host: 'routerAnsible', ip: '172.50.0.1' }
-    - { host: 'ansible1', ip: '172.50.0.2' }
-    - { host: 'ansible2', ip: '172.50.0.3' }
-    - { host: 'ansible3', ip: '172.50.0.4' }
+    - { host: 'routerAnsible', ip: '172.128.20.1' }
+    - { host: 'mysql', ip: '172.128.20.2' }
+    - { host: 'apache', ip: '172.128.20.3' }
+    - { host: 'correo', ip: '172.128.20.4' }
+
+listaPaquetes: 
+    - { name: 'postfix', version: 'latest' }
+    - { name: 'postfix-mysql', version: 'latest' }
+    - { name: 'dovecot-core', version: 'latest' }
+    - { name: 'dovecot-pop3d', version: 'latest' }
+    - { name: 'dovecot-imapd', version: 'latest' }
+    - { name: 'dovecot-lmtpd', version: 'latest' }
+    - { name: 'dovecot-mysql', version: 'latest' }

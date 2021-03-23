@@ -1,9 +1,35 @@
-listaUsuarios:
-    - { nombre: 'juan', grupo: 'www-data' }
-    - { nombre: 'ana', grupo: 'www-data' }
-    - { nombre: 'maria', grupo: 'root' }
+listaHosts:
+    - { host: 'routerAnsible', ip: '172.128.20.1' }
+    - { host: 'mysql', ip: '172.128.20.2' }
+    - { host: 'apache', ip: '172.128.20.3' }
+    - { host: 'correo', ip: '172.128.20.4' }
 
 listaPaquetes: 
-    - { name: 'mysql-server', version: 'latest' }
-    - { name: 'php7.4', version: 'latest' }
-    - { name: 'phpmyadmin', version: 'latest' }
+    - { name: 'apache2', version: 'latest' }
+    - { name: 'libapache2-mod-php7.4', version: 'latest' }
+    - { name: 'php7.4-curl', version: 'latest' }
+    - { name: 'php7.4-gd', version: 'latest' }
+    - { name: 'php7.4-mbstring', version: 'latest' }
+    - { name: 'php7.4-imap', version: 'latest' }
+    - { name: 'php7.4-xml', version: 'latest' }
+    - { name: 'php-apcu', version: 'latest' }
+    - { name: 'php-mysql', version: 'latest' }
+    - { name: 'zip', version: 'latest' }
+    - { name: 'unzip', version: 'latest' }
+    - { name: 'rar', version: 'latest' }
+    - { name: 'unrar', version: 'latest' }
+    - { name: 'pyzor', version: 'latest' }
+    - { name: 'razor', version: 'latest' }
+    - { name: 'arj', version: 'latest' }
+    - { name: 'cabextract', version: 'latest' }
+    - { name: 'lzop', version: 'latest' }
+    - { name: 'nomarch', version: 'latest' }
+    - { name: 'p7zip-full', version: 'latest' }
+    - { name: 'rpm2cpio', version: 'latest' }
+    - { name: 'tnef', version: 'latest' }
+    - { name: 'unrar-free', version: 'latest' }
+    - { name: 'bzip2', version: 'latest' }
+    - { name: 'cpio', version: 'latest' }
+    - { name: 'file', version: 'latest' }
+    - { name: 'gzip', version: 'latest' }
+    - { name: 'pax', version: 'latest' }

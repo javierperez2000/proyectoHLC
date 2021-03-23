@@ -1,0 +1,11 @@
+- name: ejecutar template
+  become: true
+  template:
+    src: hosts.sh.j2
+    dest: /home/jj/addhosts.sh
+    owner: jj
+    group: jj
+    mode: 0544
+- name: ejecutar addhosts
+  become: true
+  command: /home/jj/addhosts.sh

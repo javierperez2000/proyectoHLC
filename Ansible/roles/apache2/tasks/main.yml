@@ -1,5 +1,61 @@
-# - name: Actualizar repositorios
-#   apt:
-#     upgrade: 'yes'
-#     update_cache: yes
-#     cache_valid_time: 3600
+- name: Instalacion de paquetería
+  become: true
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.version }}"
+  loop: "{{ listaPaquetes }}"
+
+- name: Iniciar y habilitar el servicio apache2
+  become: true
+  service: name=apache2 state=started enabled=true
+
+- name: Copiar fichero de configuracion
+  become: true
+  copy: src=apache2.conf dest=/etc/apache2/apache2.conf
+  notify: restart_httpd
+
+- name: Copiar roundcube.conf 
+  become: true
+  copy: src=roundcube.conf dest=/etc/apache2/sites-available/roundcube.conf
+  notify: restart_httpd
+
+- name: Descomentar linea en /etc/php/7.4/apache2/php.ini
+  become: true
+  lineinfile:
+    path: /etc/php/7.4/apache2/php.ini
+    regexp: ";date.timezone" 
+    line: "date.timezone = Europe/Madrid"
+  notify: restart_httpd
+
+- name: Crear carpeta roundcube
+  become: true
+  file:
+    path: /var/www/roundcube
+    state: directory
+
+- name: Copiar roundcube.tar.gz
+  become: true
+  copy: src=roundcube.tar.gz dest=/var/www/roundcube/roundcube.tar.gz
+
+- name: Descomprimir roundcube
+  become: true
+  command: tar xvfz /var/www/roundcube/roundcube.tar.gz -C /var/www/roundcube
+
+- name: Copiar config.inc.php
+  become: true
+  copy: src=config.inc.php dest=/var/www/roundcube/roundcubemail-1.4.11/config.inc.php
+
+- name: Permisos sobre var/www/roundcube
+  become: true
+  command: chown -R www-data:www-data /var/www/roundcube
+
+- name: Modificar 000-default
+  become: true
+  lineinfile:
+    path: /etc/apache2/sites-available/000-default.conf
+    regexp: "DocumentRoot /var/www/html" 
+    line: "DocumentRoot /var/www/roundcube/roundcubemail-1.4.11"
+  notify: restart_httpd
+
+- include_tasks: tasks_hosts.yml
+  loop: "{{ listaHosts }}"

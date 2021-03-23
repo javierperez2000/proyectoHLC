@@ -1,5 +1,83 @@
-# - name: Actualizar repositorios
-#   apt:
-#     upgrade: 'yes'
-#     update_cache: yes
-#     cache_valid_time: 3600
+- name: Instalacion de paquetería
+  become: true
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.version }}"
+  loop: "{{ listaPaquetes }}"
+
+- name: Copiar config.sh
+  become: true
+  copy: src=config.sh dest=/root/config.sh
+
+- name: Permisos sobre config.sh
+  become: true
+  command: chmod 770 /root/config.sh
+
+- name: Copiar mysql-virtual-mailbox-domains.cf 
+  become: true
+  copy: src=mysql-virtual-mailbox-domains.cf  dest=/etc/postfix/mysql-virtual-mailbox-domains.cf
+
+- name: Copiar mysql-virtual-mailbox-maps.cf
+  become: true
+  copy: src=mysql-virtual-mailbox-maps.cf  dest=/etc/postfix/mysql-virtual-mailbox-maps.cf
+
+- name: Copiar mysql-virtual-alias-maps.cf
+  become: true
+  copy: src=mysql-virtual-alias-maps.cf  dest=/etc/postfix/mysql-virtual-alias-maps.cf
+
+- name: ejecutar config.sh
+  become: true
+  command: bash /root/config.sh
+
+- name: Copiar main.cf
+  become: true
+  copy: src=main.cf  dest=/etc/postfix/main.cf
+
+- name: Copiar master.cf
+  become: true
+  copy: src=master.cf  dest=/etc/postfix/master.cf
+
+- name: Copiar master.cf
+  become: true
+  copy: src=master.cf  dest=/etc/postfix/master.cf
+
+- name: Reiniciar y habilitar el servicio Postfix
+  service: name=postfix state=restarted enabled=true
+
+- name: Copiar dovecot.conf
+  become: true
+  copy: src=dovecot.conf  dest=/etc/dovecot/dovecot.conf
+
+- name: Copiar conf.d/10-mail.conf
+  become: true
+  copy: src=10-mail.conf  dest=/etc/dovecot/conf.d/10-mail.conf
+
+- name: Copiar conf.d/10-auth.conf
+  become: true
+  copy: src=10-auth.conf  dest=/etc/dovecot/conf.d/10-auth.conf
+
+- name: Copiar conf.d/auth-sql.conf.ext
+  become: true
+  copy: src=auth-sql.conf.ext  dest=/etc/dovecot/conf.d/auth-sql.conf.ext
+
+- name: Copiar dovecot-sql.conf.ext
+  become: true
+  copy: src=dovecot-sql.conf.ext  dest=/etc/dovecot/dovecot-sql.conf.ext
+
+- name: Copiar conf.d/10-master.conf
+  become: true
+  copy: src=10-master.conf  dest=/etc/dovecot/conf.d/10-master.conf
+
+- name: Copiar conf.d/10-ssl.conf
+  become: true
+  copy: src=10-ssl.conf  dest=/etc/dovecot/conf.d/10-ssl.conf
+
+- name: Copiar conf.d/15-lda.conf
+  become: true
+  copy: src=15-lda.conf  dest=/etc/dovecot/conf.d/15-lda.conf
+
+- name: Reiniciar y habilitar el servicio Dovecot
+  service: name=dovecot state=restarted enabled=true
+
+- include_tasks: tasks_hosts.yml
+  loop: "{{ listaHosts }}"

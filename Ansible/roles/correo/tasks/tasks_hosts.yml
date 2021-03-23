@@ -1,13 +1,11 @@
-- name: Ejecutar comando addhosts
-  ansible.builtin.debug:
-    msg: "{{ item.host }}"
-
 - name: ejecutar template
+  become: true
   template:
     src: hosts.sh.j2
-    dest: /root/addhosts.sh
-    owner: root
-    group: root
+    dest: /home/jj/addhosts.sh
+    owner: jj
+    group: jj
     mode: 0544
 - name: ejecutar addhosts
-  command: /root/addhosts.sh
+  become: true
+  command: /home/jj/addhosts.sh

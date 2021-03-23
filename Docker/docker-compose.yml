@@ -3,6 +3,10 @@ services:
     mysql:
         container_name: mysql
         hostname: mysql
+        ports:
+            - "25:25"
+            - "587:587"
+            - "465:465"
         build:
             context: ./mysql
             dockerfile: ./Dockerfile

@@ -3,3 +3,11 @@ listaHosts:
     - { host: 'ansible1', ip: '172.50.0.2' }
     - { host: 'ansible2', ip: '172.50.0.3' }
     - { host: 'ansible3', ip: '172.50.0.4' }
+
+listaBD:
+    - { comando: 'CREATE DATABASE correo;' }
+    - { comando: 'GRANT SELECT ON correo.* TO ‘usuariocorreo’@’172.128.20.%’ IDENTIFIED BY ‘usuariocorreo’;' }
+    - { comando: 'FLUSH PRIVILEGES;' }
+    - { comando: 'routerAnsible' }
+    - { comando: 'routerAnsible' }
+    - { comando: 'routerAnsible' }

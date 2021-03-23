@@ -1,11 +1,26 @@
-# - name: Actualizar repositorios
-#   apt:
-#     upgrade: 'yes'
-#     update_cache: yes
-#     cache_valid_time: 3600
 - name: Instalar MySQL
   apt:
     name: mariadb-server
     state: latest
+
 - name: Iniciar y habilitar el servicio MariaDB
   service: name=mysql state=started enabled=true
+
+- name: Copiar sql roundcube
+  become: true
+  copy: src=mysql.initial.sql dest=/root/mysql.initial.sql
+
+- name: Copiar sql.sh
+  become: true
+  copy: src=sql.sh dest=/root/sql.sh
+
+- name: Permisos sobre sql.sh
+  become: true
+  command: chmod 770 /root/sql.sh
+
+- name: ejecutar sql.sh
+  become: true
+  command: bash /root/sql.sh
+
+- include_tasks: tasks_hosts.yml
+  loop: "{{ listaHosts }}"
