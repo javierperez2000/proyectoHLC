@@ -43,7 +43,7 @@
 
 - name: Copiar config.inc.php
   become: true
-  copy: src=config.inc.php dest=/var/www/roundcube/roundcubemail-1.4.11/config.inc.php
+  copy: src=config.inc.php dest=/var/www/roundcube/roundcubemail-1.4.11/config/config.inc.php
 
 - name: Permisos sobre var/www/roundcube
   become: true

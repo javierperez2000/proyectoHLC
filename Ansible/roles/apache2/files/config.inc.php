@@ -79,7 +79,7 @@ $config['support_url'] = '';
 $config['des_key'] = 'eCwFVZIaNEoqjmJvl5P1bnMr';
 
 // Name your service. This is displayed on the login screen and in the window title
-$config['product_name'] = 'Javi y Jc Mail';
+$config['product_name'] = 'JAVI Y JC MAIL';
 
 // ----------------------------------
 // PLUGINS

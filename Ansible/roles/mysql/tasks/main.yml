@@ -22,5 +22,8 @@
   become: true
   command: bash /root/sql.sh
 
+- name: Iniciar y habilitar el servicio MariaDB
+  service: name=mysql state=restarted enabled=true
+
 - include_tasks: tasks_hosts.yml
   loop: "{{ listaHosts }}"

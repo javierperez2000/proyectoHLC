@@ -37,10 +37,6 @@
   become: true
   copy: src=master.cf  dest=/etc/postfix/master.cf
 
-- name: Copiar master.cf
-  become: true
-  copy: src=master.cf  dest=/etc/postfix/master.cf
-
 - name: Reiniciar y habilitar el servicio Postfix
   service: name=postfix state=restarted enabled=true
 
