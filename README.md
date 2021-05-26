@@ -1,4 +1,4 @@
-# PROYECTO FINAL HLC
+# PROYECTO FINAL HLC [![Finalizado](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](http://jperez.tk)
 
 _Proyecto final del módulo HLC, realizado en pareja por los integrantes Javier Pérez Piñero y Juan Carlos García Galindo._
 
